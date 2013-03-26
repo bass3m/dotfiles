@@ -1,0 +1,7 @@
+source ~/bin/dotfiles/bash/aliases
+alias ls="ls -alGh"
+alias vi=/Users/bassem/bin/vim/bin/vim
+alias vim=/Users/bassem/bin/vim/bin/vim
+alias tmuxnew="tmux new -s dev"
+alias tmuxa="tmux attach-session -t dev"
+alias dv="dirs -v"

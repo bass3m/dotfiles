@@ -1,0 +1,4 @@
+
+
+# Set PATH, CDPATH, EDITOR, etc.
+export PATH=~/bin:$PATH
