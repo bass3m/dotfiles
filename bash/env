@@ -1,4 +1,4 @@
 
 
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=~/bin:$PATH
+export PATH=~/bin:~/Dev/julia:$PATH

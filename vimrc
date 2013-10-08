@@ -2,6 +2,7 @@
 " Copy or symlink to ~/.vimrc or ~/_vimrc.
 
 set nocompatible                  " Must come first because it changes other options.
+set encoding=utf-8
 
 silent! call pathogen#runtime_append_all_bundles()
 
@@ -238,8 +239,30 @@ nnoremap <F3> :GundoToggle<CR>
 " Added 3/12/13
 " configure Powerline, enable fancy symbols
 "let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'unicode' " this displays but looks weird
 "python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+"set rtp+=/Users/bassem/bin/powerline/powerline/bindings/vim
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
+
+"set lazyredraw
+" Enable powerline fonts for airline
+let g:airline_powerline_fonts = 1
+let g:airline_modified_detection = 1
+let g:airline_enable_branch = 1
+let g:airline_enable_syntastic = 0
+let g:airline_theme = 'solarized'
+
+"let g:Powerline_theme="solarized"  " fix me XXX
+let g:Powerline_colorscheme = &background == 'light' ? 'solarized' : 'solarized256'
+
+" Added 5/5/13 (Cinco de Mayo) to enable paredit for clojure files
+au BufNewFile,BufRead *.clj call PareditInitBuffer()
+let g:paredit_smartjump = 1
+let g:paredit_electric_return = 1
+
+" Added 6/16/13 from destroy all software screencast
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
