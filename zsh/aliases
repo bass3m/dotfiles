@@ -6,3 +6,5 @@ alias vi=/usr/local/bin/vim
 alias tmuxnew="tmux new -s dev"
 alias tmuxa="tmux attach-session -t dev"
 alias dv="dirs -v"
+alias emacs=/usr/local/Cellar/emacs/24.3/bin/emacs
+alias ec=/usr/local/Cellar/emacs/24.3/bin/emacsclient
