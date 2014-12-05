@@ -36,7 +36,14 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun bassem/init-helm-gtags ()
   (use-package helm-gtags-mode
-        :defer t))
+    :defer t
+    :init
+    (progn
+      (custom-set-variables
+        '(helm-gtags-suggested-key-mapping t))
+      (add-hook 'c-mode-hook 'helm-gtags-mode)
+      (add-hook 'c++-mode-hook 'helm-gtags-mode))
+    ))
 
 ;; For each package, define a function bassem/init-<package-bassem>
 ;;

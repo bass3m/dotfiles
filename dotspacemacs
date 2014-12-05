@@ -25,6 +25,23 @@
 (global-set-key [(hyper z)] 'undo)
 (global-set-key [(hyper q)] 'save-buffers-kill-emacs)
 
+;; Bassem added 12/03/14 to attempt to fix the annoying underscore word
+(defun my-formatting ()
+  (modify-syntax-entry ?_ "w")
+  (modify-syntax-entry ?- "w")
+  (setq c-basic-offset 4))
+
+(add-hook 'c-mode-common-hook 'my-formatting)
+(add-hook 'c++-mode-common-hook 'my-formatting)
+(add-hook 'python-mode-hook 'my-formatting)
+
+(defun clean-buffer-formatting ()
+  "Indent and clean up buffer"
+  (interactive)
+  (indent-region (point-min) (point-max))
+  (whitespace-cleanup))
+(global-set-key "\C-cn" 'clean-buffer-formatting)
+
 ;; Configuration Layers
 ;; --------------------
 
@@ -33,7 +50,7 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load.
- dotspacemacs-configuration-layers '(bassem company-mode themes-megapack)
+ dotspacemacs-configuration-layers '(bassem company-mode)
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
 )
@@ -78,3 +95,22 @@ This function is called at the very end of Spacemacs initialization."
 
 ;; Do not write anything in this section. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
+ '(ahs-idle-timer 0 t)
+ '(ahs-inhibit-face-list nil)
+ '(paradox-github-token t)
+ '(ring-bell-function (quote ignore) t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
